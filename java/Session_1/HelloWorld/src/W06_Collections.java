@@ -65,4 +65,16 @@ public class W06_Collections {
         }
         return false;
     }
+
+    public static ListNode reverseList(ListNode head) {
+        ListNode res = null;
+        while (head != null) {
+            ListNode curr = head;
+            head = head.next;
+
+            curr.next = res;
+            res = curr;
+        }
+        return res;
+    }
 }
