@@ -9,4 +9,11 @@ public class W06_CollectionsTest {
         assertArrayEquals(new int[] {1, 2}, W06_Collections.twoSum(new int[] {3,2,4}, 6));
         assertArrayEquals(new int[] {0, 1}, W06_Collections.twoSum(new int[] {3,3}, 6));
     }
+
+    @Test
+    public void lengthOfLongestSubstring() {
+        assertEquals(3, W06_Collections.lengthOfLongestSubstring("abcabcbb"));
+        assertEquals(1, W06_Collections.lengthOfLongestSubstring("bbbbb"));
+        assertEquals(3, W06_Collections.lengthOfLongestSubstring("pwwkew"));
+    }
 }

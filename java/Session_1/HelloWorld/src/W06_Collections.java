@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class W06_Collections {
     public static int[] twoSum(int[] nums, int target) {
@@ -11,5 +13,30 @@ public class W06_Collections {
             map.put(nums[i], i);
         }
         return new int[] {};
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int res = 0;
+        int i = 0;
+        int j = 0;
+        Set<Character> set = new HashSet<>();
+        while (j < n) {
+            char c = s.charAt(j);
+            if (set.contains(c)) {
+                res = Math.max(res, j-i);
+                while (i < j && s.charAt(i) != c) {
+                    set.remove(s.charAt(i));
+                    i++;
+                }
+                if (i < j) {
+                    i++;
+                }
+            }
+            set.add(c);
+            j++;
+        }
+        res = Math.max(res, j-i);
+        return res;
     }
 }
