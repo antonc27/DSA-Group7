@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class W06_Collections {
     public static int[] twoSum(int[] nums, int target) {
@@ -76,5 +73,35 @@ public class W06_Collections {
             res = curr;
         }
         return res;
+    }
+
+    public static boolean isValid(String s) {
+        // ')' -> '(', etc.
+        Map<Character, Character> map = buildBracketsMap();
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (map.containsKey(c)) {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    char cc = stack.peek();
+                    stack.pop();
+                    if (map.get(c) != cc) {
+                        return false;
+                    }
+                }
+            } else {
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    private static Map<Character, Character> buildBracketsMap() {
+        Map<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+        return map;
     }
 }
