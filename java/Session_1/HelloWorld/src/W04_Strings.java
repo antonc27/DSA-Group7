@@ -10,6 +10,26 @@ public class W04_Strings {
             j--;
         }
     }
+
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] hist = new int[26];
+        for (char c : s.toCharArray()) {
+            hist[c - 'a']++;
+        }
+        int count = s.length();
+        for (char c : t.toCharArray()) {
+            hist[c - 'a']--;
+            count--;
+            if (hist[c - 'a'] < 0) {
+                return false;
+            }
+        }
+        return count == 0;
+    }
+
     public static void main(String[] args) {
         char[] s1 = {'h','e','l','l','o'};
         reverse(s1);
