@@ -49,4 +49,20 @@ public class W06_Collections {
         }
         return slow;
     }
+
+    public static boolean hasCycle(ListNode head) {
+        var slow = head;
+        var fast = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == null && fast == null) {
+                break;
+            }
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
