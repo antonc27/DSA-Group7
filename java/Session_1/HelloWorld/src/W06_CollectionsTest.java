@@ -16,4 +16,13 @@ public class W06_CollectionsTest {
         assertEquals(1, W06_Collections.lengthOfLongestSubstring("bbbbb"));
         assertEquals(3, W06_Collections.lengthOfLongestSubstring("pwwkew"));
     }
+
+    @Test
+    public void middleNode() {
+        var list1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        assertEquals(3, W06_Collections.middleNode(list1).val);
+        var list2 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6))))));
+        assertEquals(4, W06_Collections.middleNode(list2).val);
+
+    }
 }
