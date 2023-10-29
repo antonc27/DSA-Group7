@@ -25,4 +25,11 @@ public class W06_CollectionsTest {
         assertEquals(4, W06_Collections.middleNode(list2).val);
 
     }
+
+    @Test
+    public void findDuplicates() {
+        assertArrayEquals(new Integer[] {2, 3}, W06_Collections.findDuplicates(new int[] {4,3,2,7,8,2,3,1}).toArray(new Integer[] {}));
+        assertArrayEquals(new Integer[] {1}, W06_Collections.findDuplicates(new int[] {1,1,2}).toArray(new Integer[] {}));
+        assertArrayEquals(new Integer[] {}, W06_Collections.findDuplicates(new int[] {1}).toArray(new Integer[] {}));
+    }
 }
