@@ -116,4 +116,12 @@ public class W06_Collections {
         }
         return res;
     }
+
+    public static int singleNumber(int[] nums) {
+        int acc = 0;
+        for (int num : nums) {
+            acc ^= num;
+        }
+        return acc;
+    }
 }
