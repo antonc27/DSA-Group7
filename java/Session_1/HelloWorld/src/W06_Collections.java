@@ -124,4 +124,25 @@ public class W06_Collections {
         }
         return acc;
     }
+
+    public static int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        var res = new int[n];
+        int i = 0;
+        int j = n-1;
+        int resIdx = n-1;
+        while (i <= j) {
+            int squareI = nums[i] * nums[i];
+            int squareJ = nums[j] * nums[j];
+            if (squareI > squareJ) {
+                res[resIdx] = squareI;
+                i++;
+            } else {
+                res[resIdx] = squareJ;
+                j--;
+            }
+            resIdx--;
+        }
+        return res;
+    }
 }
