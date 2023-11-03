@@ -140,6 +140,53 @@ func reverseList(head *ListNode) *ListNode {
 	return res
 }
 
+func findDuplicates(nums []int) []int {
+	res := make([]int, 0)
+	for i := 0; i < len(nums); i++ {
+		vv := abs(nums[i])
+		if nums[vv-1] < 0 {
+			res = append(res, vv)
+		}
+		nums[vv-1] *= -1
+	}
+	return res
+}
+
+func abs(a int) int {
+	if a < 0 {
+		return -a
+	}
+	return a
+}
+
+func singleNumber(nums []int) int {
+	res := 0
+	for _, v := range nums {
+		res ^= v
+	}
+	return res
+}
+
+func sortedSquares(nums []int) []int {
+	res := make([]int, len(nums))
+	i := 0
+	j := len(nums) - 1
+	idx := j
+	for i <= j {
+		sqI := nums[i] * nums[i]
+		sqJ := nums[j] * nums[j]
+		if sqI > sqJ {
+			res[idx] = sqI
+			i++
+		} else {
+			res[idx] = sqJ
+			j--
+		}
+		idx--
+	}
+	return res
+}
+
 func main() {
 	fmt.Println(fizzBuzz(20))
 	fmt.Println(containsDuplicate([]int{1, 2, 3, 1}))
@@ -156,4 +203,7 @@ func main() {
 	ln2 := &ListNode{Val: 1, Next: nil}
 	ln2.Next = ln2
 	fmt.Println(hasCycle(ln2))
+	fmt.Println(findDuplicates([]int{4, 3, 2, 7, 8, 2, 3, 1}))
+	fmt.Println(singleNumber([]int{4, 1, 2, 1, 2}))
+	fmt.Println(sortedSquares([]int{-4, -1, 0, 3, 10}))
 }
